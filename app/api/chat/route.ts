@@ -7,10 +7,11 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   // Extract the `messages` from the body of the request
   const { messages } = await req.json();
+  console.log(messages)
 
   // Call the language model
   const result = await streamText({
-    model: openai('gpt-4-turbo'),
+    model: openai('gpt-3.5-turbo'),
     messages,
     async onFinish({ text, toolCalls, toolResults, usage, finishReason }) {
       // implement your own logic here, e.g. for storing messages
